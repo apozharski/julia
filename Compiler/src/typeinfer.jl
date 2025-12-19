@@ -1461,6 +1461,10 @@ function compile!(codeinfos::Vector{Any}, workqueue::CompilationQueue;
             if item.def.primary_world <= world
                 ci = typeinf_ext(interp, item, SOURCE_MODE_GET_SOURCE)
                 ci isa CodeInstance && push!(workqueue, ci)
+                println(item)
+                println(item.def.module)
+                println(item.def.file)
+                println(item.def.line)
             end
             markinspected!(workqueue, item)
         elseif item isa SimpleVector
